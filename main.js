@@ -22,26 +22,26 @@ function game (bool) {
             setTimeout( function timer(){
                 greenSound.play();
                 $("#green-button").css("background-color", "lightgreen");
-                setTimeout(changeColor, 250, "green");
-            }, i*500);     
+                setTimeout(changeColor, 400, "green");
+            }, i*700);     
         } else if (arr[i] == 2) {
             setTimeout( function timer(){
                 redSound.play();
                 $("#red-button").css("background-color", "Tomato");
-                setTimeout(changeColor, 250, "red");
-            }, i*500);    
+                setTimeout(changeColor, 400, "red");
+            }, i*700);    
         } else if (arr[i] == 3) {
             setTimeout( function timer(){
                 yellowSound.play();
                 $("#yellow-button").css("background-color", "lightyellow");
-                setTimeout(changeColor, 250, "yellow");
-            }, i*500);    
+                setTimeout(changeColor, 400, "yellow");
+            }, i*700);    
         } else if (arr[i] == 4) {
             setTimeout( function timer(){
                 blueSound.play();
                 $("#blue-button").css("background-color", "Royalblue");
-                setTimeout(changeColor, 250, "blue");
-            }, i*500);    
+                setTimeout(changeColor, 400, "blue");
+            }, i*700);    
         }
     }
     
