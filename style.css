@@ -23,10 +23,10 @@
 
 .game-btns {
     
-    width: 80px;
-    height: 80px;
-    max-height: 80px;
-    max-width: 80px;
+    width: 20vh;
+    height: 20vh;
+    max-height: 20vh;
+    max-width: 20vh;
     margin: 3px;
 }
 

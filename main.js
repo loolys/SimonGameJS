@@ -151,6 +151,5 @@ function correctAnswer(){
             currentClick = 0;
             game(true);
         }, 1000);
-
     }
 }
