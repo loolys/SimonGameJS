@@ -9,13 +9,15 @@ var currentClick = 0;
 var arr = [];
 
 function game (bool) {
+    // the random number represent a color, I choose 1=green, 2=red, 3=yellow, 4=blue
     var random = Math.floor((Math.random() * 4) + 1);
     if (bool){
+        // check if one more step should be added to the series.
         arr.push(random);
     }
     
-    console.log(arr);
     for (let i = 0; i < arr.length; i++){
+        // let creates a new closure scope for each iteration of the loop
         if (arr[i] == 1){
             setTimeout( function timer(){
                 greenSound.play();
@@ -63,7 +65,6 @@ $(document).ready(function(){
     $("#green-button").click(function(){
         $("#status-text").text("Good luck");
         if (arr[currentClick] != 1){
-            console.log("wrong");
             wrongAnswer();
             
         } else{
@@ -72,20 +73,7 @@ $(document).ready(function(){
             $("#green-button").css("background-color", "lightgreen");
             setTimeout(changeColor, 500, "green");
             currentClick += 1;
-            console.log(currentClick);
-            if (currentClick == 19)  {
-                $("#status-text").text("You Won, the game will restart");
-                currentClick = 0;
-                arr = [];
-                game(true);
-            }else if (currentClick == arr.length){
-                $("#current-step").text("Amount of steps: " + currentClick.toString());
-                setTimeout(function wait(){
-                    currentClick = 0;
-                    game(true);
-                }, 1000);
-                
-            }
+            correctAnswer();
         }
         
     });
@@ -93,27 +81,13 @@ $(document).ready(function(){
     $("#red-button").click(function(){
         $("#status-text").text("Good luck");
         if (arr[currentClick] != 2){
-            console.log("wrong");
             wrongAnswer();
         } else{
             redSound.play();
             $("#red-button").css("background-color", "Tomato");
             setTimeout(changeColor, 500, "red");
             currentClick += 1;
-            console.log(currentClick);
-            if (currentClick == 19)  {
-                $("#status-text").text("You Won, the game will restart");
-                currentClick = 0;
-                arr = [];
-                game(true);
-            }else if (currentClick == arr.length){
-                $("#current-step").text("Amount of steps: " + currentClick.toString());
-                setTimeout(function wait(){
-                    currentClick = 0;
-                    game(true);
-                }, 1000);
-                
-            }
+            correctAnswer();
         }
         
     });
@@ -121,27 +95,13 @@ $(document).ready(function(){
     $("#yellow-button").click(function(){
         $("#status-text").text("Good luck");
         if (arr[currentClick] != 3){
-            console.log("wrong");
             wrongAnswer();
         } else{
             yellowSound.play();
             $("#yellow-button").css("background-color", "lightyellow");
             setTimeout(changeColor, 500, "yellow");
             currentClick += 1;
-            console.log(currentClick);
-            if (currentClick == 19)  {
-                $("#status-text").text("You Won, the game will restart");
-                currentClick = 0;
-                arr = [];
-                game(true);
-            }else if (currentClick == arr.length){
-                $("#current-step").text("Amount of steps: " + currentClick.toString());
-                setTimeout(function wait(){
-                    currentClick = 0;
-                    game(true);
-                }, 1000);
-                
-            }
+            correctAnswer();
         }
         
     });
@@ -149,27 +109,13 @@ $(document).ready(function(){
     $("#blue-button").click(function(){
         $("#status-text").text("Good luck");
         if (arr[currentClick] != 4){
-            console.log("wrong");
             wrongAnswer();
         } else{
             blueSound.play();
             $("#blue-button").css("background-color", "RoyalBlue");
             setTimeout(changeColor, 500, "blue");
             currentClick += 1;
-            console.log(currentClick);
-            if (currentClick == 19)  {
-                $("#status-text").text("You Won, the game will restart");
-                currentClick = 0;
-                arr = [];
-                game(true);
-            }else if (currentClick == arr.length){
-                $("#current-step").text("Amount of steps: " + currentClick.toString());
-                setTimeout(function wait(){
-                    currentClick = 0;
-                    game(true);
-                }, 1000);
-                
-            }
+            correctAnswer();
         }
         
     });
@@ -190,5 +136,21 @@ function wrongAnswer() {
         currentClick = 0;
         game(false);
         }, 1000);
+    }
+}
+
+function correctAnswer(){
+    if (currentClick == 19)  {
+        $("#status-text").text("You Won, the game will restart");
+        currentClick = 0;
+        arr = [];
+        game(true);
+    }else if (currentClick == arr.length){
+        $("#current-step").text("Amount of steps: " + currentClick.toString());
+        setTimeout(function wait(){
+            currentClick = 0;
+            game(true);
+        }, 1000);
+
     }
 }
